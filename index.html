@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ad Stylistin bietet professionelle Haarstyling-Dienstleistungen in Pottenbrunn. Besuchen Sie uns für exklusive Styling-Erfahrungen.">
+    <meta name="keywords" content="Haarstyling, Friseur, Pottenbrunn, Haarpflege, Haartrends">
+    <title>Ad Stylistin</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Header Styling */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px; /* prilagoditi veličinu logoa */
+}
+
+.site-title {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.menu-icon {
+    cursor: pointer;
+}
+
+#main-nav {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    #main-nav {
+        display: block;
+    }
+}
+        /* Responzivni stilovi */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        header .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .site-title h1 {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;
+        }
+
+        .hero-text {
+            text-align: center;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-container img {
+            width: 50%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .service {
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 100%;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Mobilni uređaji */
+        @media (max-width: 768px) {
+            header .logo img {
+                max-width: 120px;
+            }
+
+            .site-title h1 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero img {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Stil za krug sa zlatnim obrubom */
+        .circle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border: 5px solid transparent;
+            border-image: linear-gradient(to right, gold, #e6b800);
+            border-image-slice: 1;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            background-color: #fff;
+        }
+
+        .circle h2 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+
+        .circle p {
+            font-size: 0.8rem;
+        }
+
+        /* Instagram ikona */
+        .instagram-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #E4405F;
+            border-radius: 50%;
+            padding: 10px;
+        }
+        .instagram-link img {
+            width: 40px;
+            height: 40px;
+        }
+         /* Stil za sekciju klijenata */
+         #clients {
+            padding: 50px 0;
+            text-align: center;
+            background-color: #f7f7f7;
+        }
+
+        #clients h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-container {
+            width: 80%;
+            margin: 0 auto;
+            border: 2px solid gold;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            background-color: white;
+        }
+
+        .testimonial {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #333;
+            display: none;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .testimonial.active {
+            display: block;
+        }
+
+        .testimonial::before {
+            content: "“";
+            font-size: 3rem;
+            color: gold;
+            position: absolute;
+            top: -30px;
+            left: 10px;
+        }
+
+        .testimonial::after {
+            content: "”";
+            font-size: 3rem;
+            color: gold;
+            position: absolute;
+            bottom: -30px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Firmenlogo">
+            </div>
+            <div class="site-title">
+                <h1>Ad Stylistin</h1>
+            </div>
+            <div class="menu-container">
+                <button class="menu-button" onclick="toggleMenu()">
+                    <i>&#x2702;</i>
+                </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home">Start</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#services">Dienstleistungen</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#video">Video</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="hero">
+            <img src="salon3.jpg" alt="Haarstyling">
+            <div class="hero-text">
+                <h2 class="black-heading">Willkommen bei AD Hair & Beauty</h2>
+                <p>Wo Schönheit und Stil aufeinandertreffen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container circle-container">
+            <div class="circle">
+                <div>
+                    <h2>Über mich</h2>
+                    <p>
+                        AD – Amira Design Your Hair Die Initialen „AD“ stehen für Amira Design Your Hair, denn mit Leidenschaft und Präzision gestalte ich Ihr persönliches Haarerlebnis – einzigartig wie Sie.
+
+Seit 2015 steht mein Name für erstklassige Friseurkunst und professionelle Haarpflege. 
+
+In meinen Studio verwende ich ausschließlich hochwertige Pflegeprodukte, um Ihr Haar optimal zu verwöhnen. Aus diesem Grund setze ich auf die exklusive Produktlinie von Newsha. 
+
+Als Einzelunternehmerin mit einem Meistertitel lege ich besonderen Wert auf Qualität, individuelle Beratung und exzellente Ergebnisse.
+
+                        <strong>AD – Amira Design Your Hair</strong><br><br>
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="black-heading">Unsere Dienstleistungen</h2>
+            <div class="gallery-container">
+                <div class="service">
+                    <img src="post1.jpg" alt="Dienstleistung 1">
+                    <h3>Dienstleistung 1</h3>
+                    <p>Beschreibung der Dienstleistung 1.</p>
+                </div>
+                <div class="service">
+                    <img src="s6.jpg" alt="Dienstleistung 2">
+                    <h3>Dienstleistung 2</h3>
+                    <p>Beschreibung der Dienstleistung 2.</p>
+                </div>
+                <div class="service">
+                    <img src="post2.jpg" alt="Dienstleistung 3">
+                    <h3>Dienstleistung 3</h3>
+                    <p>Beschreibung der Dienstleistung 3.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Galerie</h2>
+            <div class="gallery-container">
+                <img src="logo1.jpg" alt="Galerie Bild 1">
+                <img src="s3.jpg" alt="Galerie Bild 2">
+                <img src="r3.jpg" alt="Galerie Bild 3">
+                <img src="s2.jpg" alt="Galerie Bild 4">
+                <img src="r1.jpg" alt="Galerie Bild 5">
+                <img src="s5.jpg" alt="Galerie Bild 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sekcija zadovoljnih klijenata sa rotacijom -->
+    <section id="clients">
+        <div class="container">
+            <h2>Zufriedene Kunden</h2>
+            <div class="testimonial-container">
+                <div class="testimonial active">
+                    <p>"Amira ist einfach die Beste! Mein Haar hat noch nie so gut ausgesehen." – Sabine K.</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Fantastische Arbeit und sehr professionell!" – Thomas L.</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Ich komme immer wieder gerne, Amira hat mein Vertrauen gewonnen." – Reisa K.</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Tolle Atmosphäre, und Amira versteht genau, was ich will." – Elke F.</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Immer wieder ein tolles Erlebnis!" – Sandra R.</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Ich empfehle AD Stylistin jedem, der das Beste für sein Haar will." – Markus W.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video">
+        <div class="container">
+            <h2>Unser Video</h2>
+            <div class="video-container">
+                <video controls autoplay muted>
+                    <source src="v1.mp4" type="video/mp4">
+                    Ihr Browser unterstützt dieses Video-Format nicht.
+                </video>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <h2 class="black-heading">Kontaktieren Sie uns</h2>
+            <p>Adresse: Schönstraße 11, 3140 Pottenbrunn</p>
+            <p>Telefon: +43 (0)676 45 25 000</p>
+            <p>Email: office@ad-stylistin.at</p>
+        </div>
+    </section>
+
+    <section id="map">
+        <div class="container">
+            <h2>Unsere Lage</h2>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2218.712168089889!2d15.6098!3d48.2094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d063f0489c1a1%3A0xfbe48e8c8e26d38e!2sSchönstraße%2011%2C%203140%20Pottenbrunn%2C%20Österreich!5e0!3m2!1sen!2sde!4v1694157987711!5m2!1sen!2sde"
+                width="100%"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+    <!-- Instagram link -->
+    <a href="https://www.instagram.com/ad_hair_and_beauty_?utm_source=ig_web_button_share_sheet&igshid=ZDNlZDc0MzIxNw==" class="instagram-link" target="_blank">
+        <img src="insta.png" alt="Instagram">
+    </a>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 INFINTY. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+    <!-- JavaScript -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('main-nav');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+
+            }
+        }
+    </script>
+    <script>
+        // Otvaranje galerije
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const src = this.src;
+                const description = this.getAttribute('data-description');
+                document.getElementById('lightbox-img').src = src;
+                document.getElementById('lightbox-description').innerText = description;
+                document.getElementById('lightbox').style.display = 'block';
+            });
+        });
+
+        // Zatvaranje galerije
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+    </script>
+    <script>
+        // Rotacija pohvala svakih 5 sekundi
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+
+        function rotateTestimonials() {
+            testimonials[currentTestimonial].classList.remove('active');
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            testimonials[currentTestimonial].classList.add('active');
+        }
+
+        setInterval(rotateTestimonials, 5000);
+    </script>
+</body>
+</html>
